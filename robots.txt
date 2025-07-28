@@ -1,0 +1,11 @@
+User-agent: *
+
+# Allow search engines to crawl the main pages
+Allow: /
+Allow: /watch.html
+
+# Disallow search engines from crawling the admin panel
+Disallow: /admin.html
+
+# Location of your sitemap
+Sitemap: https://sahilk2807.github.io/Animetoons/sitemap.xml
