@@ -1,0 +1,79 @@
+/* Custom Theme */
+body {
+    background-color: #121212 !important;
+}
+.bg-dark-2 {
+    background-color: #1c1c1c !important;
+}
+
+/* Splash Screen */
+#splash-screen {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #121212; z-index: 1056; display: flex;
+    flex-direction: column; justify-content: center; align-items: center;
+    transition: opacity 0.5s ease-out;
+}
+.splash-logo {
+    width: 100px; margin-bottom: 20px;
+}
+
+/* Anime Card */
+.anime-card {
+    transition: transform 0.2s ease-in-out;
+    background-color: #1c1c1c; border: none;
+}
+.anime-card:hover {
+    transform: scale(1.05); z-index: 10;
+}
+.anime-card img {
+    aspect-ratio: 2 / 3; object-fit: cover;
+}
+.anime-card .card-body { padding: 0.8rem; }
+.anime-card .card-title {
+    font-size: 0.9rem; white-space: nowrap;
+    overflow: hidden; text-overflow: ellipsis;
+}
+
+/* Skeleton Loaders */
+.skeleton-card .skeleton-img, .skeleton-player {
+    height: 300px; background-color: #333;
+    animation: shimmer 1.5s infinite linear;
+}
+.skeleton-player { border-radius: 0.375rem; }
+.skeleton-text {
+    height: 1.2rem; background-color: #333;
+    border-radius: 0.25rem;
+    animation: shimmer 1.5s infinite linear;
+}
+.skeleton-title { height: 2.5rem; width: 60%; }
+.skeleton-desc { height: 1.2rem; }
+@keyframes shimmer {
+    0% { background-color: #333; }
+    50% { background-color: #444; }
+    100% { background-color: #333; }
+}
+
+/* Video & Episodes */
+.video-container {
+    position: relative; padding-bottom: 56.25%;
+    height: 0; overflow: hidden; max-width: 100%; background: #000;
+}
+.video-container iframe {
+    position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+#episode-list {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+}
+.episode-btn {
+    min-width: 40px; text-align: center;
+}
+
+/* Other Styles */
+#category-filters .btn.active { background-color: #6f42c1; border-color: #6f42c1; }
+.btn-primary { background-color: #6f42c1; border-color: #6f42c1; }
+.btn-outline-primary { color: #6f42c1; border-color: #6f42c1; }
+.btn-outline-primary:hover { background-color: #6f42c1; border-color: #6f42c1; color: #fff; }
+.btn-check:checked+.btn-outline-primary, .btn-check:active+.btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active {
+    background-color: #6f42c1; border-color: #6f42c1; color: #fff;
+}
