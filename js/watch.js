@@ -1,9 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- CONFIGURATION ---
     const SUPABASE_URL = 'https://jodbumjdczmsvunwhrbu.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvZGJ1bWpkY3ptc3Z1bndocmJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3MDMyOTQsImV4cCI6MjA2OTI3OTI5NH0.f5ME3dgrRLTqYUsFpVeMKjf_ubM6rzWDNcXX8iYFDro';
 
-    // --- DOM ELEMENTS ---
     const videoPlayer = document.getElementById('video-player');
     const animeTitle = document.getElementById('anime-title');
     const animeDescription = document.getElementById('anime-description');
@@ -44,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 handleError('Anime not found', 'The requested anime could not be found in our database.');
             }
         } catch (error) {
-            console.error("Error loading anime details:", error);
             handleError('Error Loading Anime', 'Could not load details. Please try again later.');
         }
     }
@@ -52,11 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayAnime(anime) {
         document.title = `Watch ${anime.title} - Animetoon`;
         animeTitle.textContent = anime.title;
-        animeDescription.textContent = anime.description;
+        animeDescription.textContent = anime.description || "No description available."; // Show fallback text
 
         const episodes = anime.episodes || [];
-        if (episodes.length > 0) {
-            videoPlayer.src = episodes[0].url; // Load first episode by default
+        if (episodes.length > 0 && episodes[0].url) {
+            videoPlayer.src = episodes[0].url;
             
             if (episodes.length > 1) {
                 episodeList.innerHTML = '';
@@ -73,7 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         } else {
-            videoPlayer.style.display = 'none';
+            // FIX: Handle case where there's no video
+            document.querySelector('.video-container').innerHTML = '<div class="alert alert-warning">Video not available.</div>';
         }
         
         loader.style.display = 'none';
