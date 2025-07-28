@@ -1,3 +1,4 @@
+// This file is identical to the previous version, but is included for completeness.
 document.addEventListener('DOMContentLoaded', () => {
     // --- CONFIGURATION ---
     const SUPABASE_URL = 'https://jodbumjdczmsvunwhrbu.supabase.co';
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const card = document.createElement('div');
             card.className = 'col animate__animated animate__fadeIn';
             card.innerHTML = `
-                <a href="watch.html?id=${anime.id}" class="text-decoration-none text-white">
+                <a href="watch.html?id=${anime.id}" class="text-decoration-none">
                     <div class="card anime-card h-100">
                         <img src="${anime.poster_url}" class="card-img-top" alt="${anime.title}" loading="lazy">
                         <div class="card-body"><h5 class="card-title">${anime.title}</h5></div>
