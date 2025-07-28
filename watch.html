@@ -23,7 +23,7 @@
 
     <main class="container mt-4">
         <div id="loader">
-            <!-- Skeleton Loader -->
+            <!-- Main Content Skeleton -->
             <div class="skeleton-player mb-4"></div>
             <div class="skeleton-text skeleton-title"></div>
             <div class="skeleton-text skeleton-desc mt-2"></div>
@@ -38,17 +38,27 @@
                     </div>
 
                     <h1 id="anime-title"></h1>
-                    <p id="anime-description" class="text-muted"></p>
+                    <!-- FIX: Removed text-muted class for better visibility -->
+                    <p id="anime-description"></p>
                     
-                    <div id="episode-list" class="my-4">
-                        <!-- Episode buttons will be inserted here -->
-                    </div>
+                    <div id="episode-list" class="my-4"></div>
 
                     <div class="ad-container text-center my-3">
                         <script type="text/javascript">
                             atOptions = { 'key' : '28c6144a65ec365dcd723679909923e1', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
                         </script>
                         <script type="text/javascript" src="//grubpaths.com/28c6144a65ec365dcd723679909923e1/invoke.js"></script>
+                    </div>
+
+                    <!-- NEW: Recommended Anime Section -->
+                    <hr class="my-4">
+                    <h3 class="mb-3">You Might Also Like</h3>
+                    <div id="recommended-grid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 g-3">
+                        <!-- Recommended Skeleton Loader -->
+                        <div class="col"><div class="skeleton-card"><div class="skeleton-img-sm"></div><div class="card-body"><div class="skeleton-text-sm"></div></div></div></div>
+                        <div class="col"><div class="skeleton-card"><div class="skeleton-img-sm"></div><div class="card-body"><div class="skeleton-text-sm"></div></div></div></div>
+                        <div class="col d-none d-sm-block"><div class="skeleton-card"><div class="skeleton-img-sm"></div><div class="card-body"><div class="skeleton-text-sm"></div></div></div></div>
+                        <div class="col d-none d-md-block"><div class="skeleton-card"><div class="skeleton-img-sm"></div><div class="card-body"><div class="skeleton-text-sm"></div></div></div></div>
                     </div>
                 </div>
             </div>
@@ -62,4 +72,4 @@
     <script type='text/javascript' src='//grubpaths.com/a4/7b/1e/a47b1e48062623e0d56714d24c7eb982.js'></script>
     <script src="js/watch.js"></script>
 </body>
-</html> 
+</html>
