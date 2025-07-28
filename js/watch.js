@@ -1,11 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- CONFIGURATION ---
     const SUPABASE_URL = 'https://jodbumjdczmsvunwhrbu.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpvZGJ1bWpkY3ptc3Z1bndocmJ1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTM3MDMyOTQsImV4cCI6MjA2OTI3OTI5NH0.f5ME3dgrRLTqYUsFpVeMKjf_ubM6rzWDNcXX8iYFDro';
 
+    // --- DOM ELEMENTS ---
     const videoPlayer = document.getElementById('video-player');
     const animeTitle = document.getElementById('anime-title');
     const animeDescription = document.getElementById('anime-description');
     const episodeList = document.getElementById('episode-list');
+    const recommendedGrid = document.getElementById('recommended-grid');
     const loader = document.getElementById('loader');
     const content = document.getElementById('content');
     const offlineMessage = document.getElementById('offline-message');
@@ -38,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await response.json();
             if (data.length > 0) {
                 displayAnime(data[0]);
+                loadRecommendedAnime(data[0].id); // NEW: Load recommendations
             } else {
                 handleError('Anime not found', 'The requested anime could not be found in our database.');
             }
@@ -49,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function displayAnime(anime) {
         document.title = `Watch ${anime.title} - Animetoon`;
         animeTitle.textContent = anime.title;
-        animeDescription.textContent = anime.description || "No description available."; // Show fallback text
+        animeDescription.textContent = anime.description || "No description available.";
 
         const episodes = anime.episodes || [];
         if (episodes.length > 0 && episodes[0].url) {
@@ -70,12 +74,37 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         } else {
-            // FIX: Handle case where there's no video
-            document.querySelector('.video-container').innerHTML = '<div class="alert alert-warning">Video not available.</div>';
+            document.querySelector('.video-container').innerHTML = '<div class="alert alert-warning text-center">Video Not Available</div>';
         }
         
         loader.style.display = 'none';
         content.style.display = 'block';
+    }
+
+    // NEW: Function to load recommended anime
+    async function loadRecommendedAnime(currentId) {
+        const url = `${SUPABASE_URL}/rest/v1/animes?id=neq.${currentId}&select=id,title,poster_url&limit=6&order=created_at.desc`;
+        try {
+            const response = await fetch(url, { headers: { 'apikey': SUPABASE_ANON_KEY, 'Authorization': `Bearer ${SUPABASE_ANON_KEY}` } });
+            const recommendedAnimes = await response.json();
+            
+            recommendedGrid.innerHTML = ''; // Clear skeleton loaders
+            recommendedAnimes.forEach(anime => {
+                const card = document.createElement('div');
+                card.className = 'col';
+                card.innerHTML = `
+                    <a href="watch.html?id=${anime.id}" class="text-decoration-none">
+                        <div class="card anime-card h-100">
+                            <img src="${anime.poster_url}" class="card-img-top" alt="${anime.title}" loading="lazy">
+                            <div class="card-body"><h5 class="card-title">${anime.title}</h5></div>
+                        </div>
+                    </a>`;
+                recommendedGrid.appendChild(card);
+            });
+        } catch (error) {
+            console.error("Failed to load recommended anime:", error);
+            recommendedGrid.innerHTML = '<p class="text-muted">Could not load recommendations.</p>';
+        }
     }
 
     function handleError(title, description) {
