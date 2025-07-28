@@ -30,8 +30,12 @@ body {
 }
 .anime-card .card-body { padding: 0.8rem; }
 .anime-card .card-title {
-    font-size: 0.9rem; white-space: nowrap;
-    overflow: hidden; text-overflow: ellipsis;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ffffff !important; /* FIX: Make title bright white */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* FIX: Add shadow for readability */
 }
 
 /* Skeleton Loaders */
@@ -70,10 +74,8 @@ body {
 }
 
 /* Other Styles */
-#category-filters .btn.active { background-color: #6f42c1; border-color: #6f42c1; }
-.btn-primary { background-color: #6f42c1; border-color: #6f42c1; }
+#category-filters .btn.active, .btn-primary { background-color: #6f42c1; border-color: #6f42c1; }
 .btn-outline-primary { color: #6f42c1; border-color: #6f42c1; }
-.btn-outline-primary:hover { background-color: #6f42c1; border-color: #6f42c1; color: #fff; }
-.btn-check:checked+.btn-outline-primary, .btn-check:active+.btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active {
+.btn-outline-primary:hover, .btn-check:checked+.btn-outline-primary, .btn-outline-primary.active {
     background-color: #6f42c1; border-color: #6f42c1; color: #fff;
 }
