@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animetoon - Watch Your Favorite Anime Online in HD</title>
+    <meta name="description" content="Animetoon is the best platform to watch anime online for free. Stream popular anime series and movies in HD, with a vast library of titles across all genres.">
+    <meta name="keywords" content="anime, watch anime, stream anime, anime online, free anime, anime hd, animetoon">
+    <link rel="canonical" href="https://your-username.github.io/your-repo-name/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-username.github.io/your-repo-name/">
+    <meta property="og:title" content="Animetoon - Watch Your Favorite Anime Online in HD">
+    <meta property="og:description" content="Stream popular anime series and movies in HD.">
+    <meta property="og:image" content="https://your-username.github.io/your-repo-name/assets/logo.png">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://your-username.github.io/your-repo-name/">
+    <meta property="twitter:title" content="Animetoon - Watch Your Favorite Anime Online in HD">
+    <meta property="twitter:description" content="Stream popular anime series and movies in HD.">
+    <meta property="twitter:image" content="https://your-username.github.io/your-repo-name/assets/logo.png">
+    <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE_HERE" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-dark text-white">
+
+    <div id="splash-screen">
+        <img src="assets/logo.png" alt="Animetoon Logo" class="splash-logo animate__animated animate__zoomIn">
+        <h1 class="animate__animated animate__fadeIn animate__delay-1s">Animetoon</h1>
+    </div>
+
+    <div id="offline-message" class="alert alert-danger text-center" style="display:none;">
+        You are currently offline. Please check your internet connection.
+    </div>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark-2 sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Animetoon</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input id="search-input" class="form-control me-2" type="search" placeholder="Search Anime...">
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mt-4">
+        <div id="category-filters" class="mb-4 text-center">
+            <button class="btn btn-primary filter-btn active" data-category="All">All</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="Action">Action</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="Comedy">Comedy</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="Romance">Romance</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="Sci-Fi">Sci-Fi</button>
+            <button class="btn btn-outline-primary filter-btn" data-category="Fantasy">Fantasy</button>
+        </div>
+        
+        <div class="ad-container text-center my-3">
+            <script type="text/javascript">
+                atOptions = { 'key' : '28c6144a65ec365dcd723679909923e1', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="//grubpaths.com/28c6144a65ec365dcd723679909923e1/invoke.js"></script>
+        </div>
+
+        <div id="anime-grid" class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-4"></div>
+    </main>
+
+    <footer class="text-center text-muted py-4 mt-5">
+        <p>© 2024 Animetoon. All rights reserved.</p>
+        <p>Disclaimer: This site does not store any files on its server. All contents are provided by non-affiliated third parties.</p>
+    </footer>
+
+    <script type='text/javascript' src='//grubpaths.com/a4/7b/1e/a47b1e48062623e0d56714d24c7eb982.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
