@@ -13,25 +13,25 @@
 
     <div id="admin-login" style="display:none;" class="animate__animated animate__fadeIn">
         <div class="container mt-5">
-            <div class="card mx-auto" style="max-width: 700px;">
+            <!-- Add/Edit Form -->
+            <div class="card mx-auto" style="max-width: 800px;">
                 <div class="card-header bg-primary text-white">
-                    <h2>Animetoon Admin Panel</h2>
+                    <h2 id="form-title">Add New Anime</h2>
                 </div>
                 <div class="card-body">
                     <div id="alert-container"></div>
                     <form id="add-anime-form">
+                        <!-- Search and Hidden ID -->
                         <div class="mb-3">
                             <label for="anime-search" class="form-label">Search by Title or TMDb TV ID</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="anime-search" placeholder="e.g., Attack on Titan or 1429" required>
-                                <button class="btn btn-secondary" type="button" id="fetch-tmdb-btn">
-                                    <span id="fetch-spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                                    Fetch Details
-                                </button>
+                                <input type="text" class="form-control" id="anime-search" placeholder="e.g., Attack on Titan or 1429">
+                                <button class="btn btn-secondary" type="button" id="fetch-tmdb-btn">Fetch Details</button>
                             </div>
                         </div>
-                        
                         <input type="hidden" id="anime_id">
+                        
+                        <!-- Main Fields -->
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="title" required>
@@ -40,30 +40,57 @@
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" rows="3" required></textarea>
                         </div>
-                        <div class="mb-3">
-                            <label for="poster_url" class="form-label">Poster URL</label>
-                            <input type="text" class="form-control" id="poster_url" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="category" class="form-label">Category</label>
-                            <select class="form-select" id="category" required>
-                                <option value="Action">Action</option><option value="Comedy">Comedy</option><option value="Romance">Romance</option><option value="Sci-Fi">Sci-Fi</option><option value="Fantasy">Fantasy</option><option value="Drama">Drama</option><option value="Horror">Horror</option>
-                            </select>
+                        <div class="row">
+                            <div class="col-md-8 mb-3">
+                                <label for="poster_url" class="form-label">Poster URL</label>
+                                <input type="text" class="form-control" id="poster_url" required>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <label for="category" class="form-label">Category</label>
+                                <select class="form-select" id="category" required>
+                                    <option value="Action">Action</option><option value="Comedy">Comedy</option><option value="Romance">Romance</option><option value="Sci-Fi">Sci-Fi</option><option value="Fantasy">Fantasy</option><option value="Drama">Drama</option><option value="Horror">Horror</option><option value="Thriller">Thriller</option><option value="Mystery">Mystery</option><option value="Slice of Life">Slice of Life</option>
+                                </select>
+                            </div>
                         </div>
                         
-                        <hr>
-                        <h5>Episodes</h5>
-                        <div id="episode-list-admin">
-                            <!-- Episode fields will be added here dynamically -->
-                        </div>
+                        <!-- Episodes -->
+                        <hr><h5 class="mb-3">Episodes</h5>
+                        <div id="episode-list-admin"></div>
                         <button type="button" id="add-episode-btn" class="btn btn-sm btn-outline-success mt-2">Add Episode</button>
                         <hr>
                         
-                        <button type="submit" id="submit-btn" class="btn btn-primary w-100">
-                            <span id="submit-spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none;"></span>
-                            <span id="submit-text">Add/Update Anime</span>
-                        </button>
+                        <!-- Action Buttons -->
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button type="button" id="clear-form-btn" class="btn btn-secondary">Clear Form</button>
+                            <button type="submit" id="submit-btn" class="btn btn-primary">Add/Update Anime</button>
+                        </div>
                     </form>
+                </div>
+            </div>
+
+            <!-- Manage Existing Anime -->
+            <div class="card mx-auto mt-5" style="max-width: 800px;">
+                <div class="card-header">
+                    <h2>Manage Existing Anime</h2>
+                </div>
+                <div class="card-body">
+                    <div id="manage-loader" class="text-center">
+                        <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="manage-table" style="display:none;">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Category</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="anime-manage-table-body">
+                                <!-- Anime list will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
