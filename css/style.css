@@ -34,8 +34,8 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: #ffffff !important; /* FIX: Make title bright white */
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); /* FIX: Add shadow for readability */
+    color: #ffffff !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
 /* Skeleton Loaders */
@@ -51,6 +51,17 @@ body {
 }
 .skeleton-title { height: 2.5rem; width: 60%; }
 .skeleton-desc { height: 1.2rem; }
+
+/* NEW: Skeletons for Recommended Section */
+.skeleton-img-sm {
+    height: 200px; background-color: #333;
+    animation: shimmer 1.5s infinite linear;
+}
+.skeleton-text-sm {
+    height: 1rem; background-color: #333; border-radius: 0.25rem;
+    animation: shimmer 1.5s infinite linear;
+}
+
 @keyframes shimmer {
     0% { background-color: #333; }
     50% { background-color: #444; }
